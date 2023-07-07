@@ -7,22 +7,32 @@
 ; 多边形的布尔运算
 
 procedure(ycPolygonBoolean(operation polygon1 foo \@key cvId(_ycMakeGeometryTempCellView()) "Slgd")
-    prog((operationList polygonList)
+    let((operationList polygonList)
 
         when(stringp(operation)
             operation = stringToSymbol(operation)
         )
         operationList = '(and not or xor size)
         unless(member(operation operationList)
-            ycError("argument for keyword ?operation should be one of the %A - %A" operationList operation)
+            ycError("argument #1 should be one of the %A - %A" operationList operation)
         )
 
         ; polygon1
-        when(length(polygon1) < 3
-            ycError("argument #1 should be a point list for polygon - %A" polygon1)
+        cond(
+            (forall(x polygon1 isLocation(x))
+                polygon1 = list(polygon1)   ; 单个多边形
+            )
+            (forall(polygon polygon1 forall(x polygon isLocation(x)))
+                t   ; 多边形列表
+            )
+            (t
+                ycError("argument #2 should be either a list of point or a list of points - %A" polygon1)
+            )
         )
-        unless(forall(x polygon1 isLocation(x))
-            ycError("argument #1 is not a valid point list - %A" polygon1)
+        foreach(x polygon1
+            when(length(x) < 3
+                ycError("argument #2 should be a point list for polygon - %A" polygon1)
+            )
         )
 
         ; cvId
@@ -34,17 +44,27 @@ procedure(ycPolygonBoolean(operation polygon1 foo \@key cvId(_ycMakeGeometryTemp
         polygonList = case(operation
             ((and not or xor)
                 ; polygon2
-                when(length(foo) < 3
-                    ycError("argument #2 should be a point list for polygon - %A" foo)
+                cond(
+                    (forall(x foo isLocation(x))
+                        foo = list(foo)   ; 单个多边形
+                    )
+                    (forall(polygon foo forall(x polygon isLocation(x)))
+                        t   ; 多边形列表
+                    )
+                    (t
+                        ycError("argument #3 should be either a list of point or a list of points - %A" foo)
+                    )
                 )
-                unless(forall(x foo isLocation(x))
-                    ycError("argument #2 is not a valid point list - %A" foo)
+                foreach(x foo
+                    when(length(x) < 3
+                        ycError("argument #3 should be a point list for polygon - %A" foo)
+                    )
                 )
                 case(operation
-                    (and       dbPointArrayAnd(cvId list(polygon1) list(foo)))
-                    (not    dbPointArrayAndNot(cvId list(polygon1) list(foo)))
-                    (or         dbPointArrayOr(cvId list(polygon1) list(foo)))
-                    (xor       dbPointArrayXor(cvId list(polygon1) list(foo)))
+                    (and       dbPointArrayAnd(cvId polygon1 foo))
+                    (not    dbPointArrayAndNot(cvId polygon1 foo))
+                    (or         dbPointArrayOr(cvId polygon1 foo))
+                    (xor       dbPointArrayXor(cvId polygon1 foo))
                 )
             )
             ("size"
@@ -52,11 +72,11 @@ procedure(ycPolygonBoolean(operation polygon1 foo \@key cvId(_ycMakeGeometryTemp
                 unless(numberp(foo)
                     ycError("argument #2 should be an number - %A" foo)
                 )
-                dbPointArraySize(cvId list(polygon1) list(foo))
+                dbPointArraySize(cvId polygon1 foo)
             )
         )
 
-        return(polygonList)
+        polygonList
     )
 ); ycPolygonBoolean
 
