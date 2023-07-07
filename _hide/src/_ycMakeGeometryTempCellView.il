@@ -6,7 +6,7 @@
 
 procedure(_ycMakeGeometryTempCellView()
     prog((cvId)
-        when(cvId = car(dbGetOpenCellViews())
+        when(cvId = geGetEditCellView() || car(dbGetOpenCellViews())
             return(cvId)
         )
         foreach(lib ddGetLibList()
