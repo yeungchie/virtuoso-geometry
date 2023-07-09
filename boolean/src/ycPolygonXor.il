@@ -5,7 +5,7 @@
 ;--------------------------
 
 procedure(ycPolygonXor(polygon1 polygon2 \@key cvId(_ycMakeGeometryTempCellView()) "llg")
-    ycPolygonBoolean('xor polygon1 polygon2 ?cvId cvId)
+    ycPolygonBoolean(polygon1 polygon2 'xor ?cvId cvId)
 )
 
 ; END

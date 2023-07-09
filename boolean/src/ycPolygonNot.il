@@ -5,7 +5,7 @@
 ;--------------------------
 
 procedure(ycPolygonNot(polygon1 polygon2 \@key cvId(_ycMakeGeometryTempCellView()) "llg")
-    ycPolygonBoolean('not polygon1 polygon2 ?cvId cvId)
+    ycPolygonBoolean(polygon1 polygon2 'not ?cvId cvId)
 )
 
 ; END

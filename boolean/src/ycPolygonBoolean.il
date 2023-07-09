@@ -6,7 +6,7 @@
 
 ; 多边形的布尔运算
 
-procedure(ycPolygonBoolean(operation polygon1 foo \@key cvId(_ycMakeGeometryTempCellView()) "Slgd")
+procedure(ycPolygonBoolean(polygon1 foo operation \@key cvId(_ycMakeGeometryTempCellView()) "lgSd")
     let((operationList polygonList)
 
         when(stringp(operation)
@@ -14,7 +14,7 @@ procedure(ycPolygonBoolean(operation polygon1 foo \@key cvId(_ycMakeGeometryTemp
         )
         operationList = '(and not or xor size)
         unless(member(operation operationList)
-            ycError("argument #1 should be one of the %A - %A" operationList operation)
+            ycError("argument #3 should be one of the %A - %A" operationList operation)
         )
 
         ; polygon1
@@ -26,12 +26,12 @@ procedure(ycPolygonBoolean(operation polygon1 foo \@key cvId(_ycMakeGeometryTemp
                 t   ; 多边形列表
             )
             (t
-                ycError("argument #2 should be either a list of point or a list of points - %A" polygon1)
+                ycError("argument #1 should be either a list of point or a list of points - %A" polygon1)
             )
         )
         foreach(x polygon1
             when(length(x) < 3
-                ycError("argument #2 should be a point list for polygon - %A" polygon1)
+                ycError("argument #1 should be a point list for polygon - %A" polygon1)
             )
         )
 
@@ -52,12 +52,12 @@ procedure(ycPolygonBoolean(operation polygon1 foo \@key cvId(_ycMakeGeometryTemp
                         t   ; 多边形列表
                     )
                     (t
-                        ycError("argument #3 should be either a list of point or a list of points - %A" foo)
+                        ycError("argument #2 should be either a list of point or a list of points - %A" foo)
                     )
                 )
                 foreach(x foo
                     when(length(x) < 3
-                        ycError("argument #3 should be a point list for polygon - %A" foo)
+                        ycError("argument #2 should be a point list for polygon - %A" foo)
                     )
                 )
                 case(operation

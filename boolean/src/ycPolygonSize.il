@@ -5,7 +5,7 @@
 ;--------------------------
 
 procedure(ycPolygonSize(polygon1 size \@key cvId(_ycMakeGeometryTempCellView()) "lng")
-    ycPolygonBoolean('size polygon1 size ?cvId cvId)
+    ycPolygonBoolean(polygon1 size 'size ?cvId cvId)
 )
 
 ; END
