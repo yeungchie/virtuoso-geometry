@@ -30,10 +30,10 @@ procedure(ycGetLineButted(\@rest lines "l")
             coef2 = ycGetLineCoef(line2)
             k2 = coef2->k
             C2 = coef2->C
-            unless((k1 == k2) || (k1 - k2) < 1e-10
+            unless((k1 == k2) || abs(k1 - k2) < 1e-10
                 return()
             )
-            unless((C1 == C2) || (C1 - C2) < 1e-10
+            unless((C1 == C2) || abs(C1 - C2) < 1e-10
                 return()
             )
 
