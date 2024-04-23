@@ -13,5 +13,6 @@ ycLoadi("src/ycIsPolygonEquilateral.il")
 ycLoadi("src/ycPointsToBBox.il")
 ycLoadi("src/ycPointsToLines.il")
 ycLoadi("src/ycGetFigPoints.il")
+ycLoadi("src/ycGetPolygonEqualBBox.il")
 
 ; END
