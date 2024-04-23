@@ -1,5 +1,5 @@
 ;--------------------------
-; Program  : virtuoso-geometry(_hide/_ycMakeGeometryTempCellView.il)
+; Program  : virtuoso-geometry(utils/_ycMakeGeometryTempCellView.il)
 ; Language : Cadence Skill
 ; Author   : YEUNGCHIE
 ;--------------------------

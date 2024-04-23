@@ -4,7 +4,7 @@
 ; Author   : YEUNGCHIE
 ;--------------------------
 
-ycLoadi("_hide/load.il")
+ycLoadi("utils/load.il")
 ycLoadi("bbox/load.il")
 ycLoadi("line/load.il")
 ycLoadi("point/load.il")

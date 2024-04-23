@@ -1,5 +1,5 @@
 ;--------------------------
-; Program  : virtuoso-geometry(_hide/load.il)
+; Program  : virtuoso-geometry(utils/load.il)
 ; Language : Cadence Skill
 ; Author   : YEUNGCHIE
 ;--------------------------
