@@ -19,6 +19,9 @@ procedure(ycPolygonBoolean(polygon1 foo operation \@key cvId(_ycMakeGeometryTemp
 
         ; polygon1
         cond(
+            (!polygon1
+                t
+            )
             (forall(x polygon1 isLocation(x))
                 polygon1 = list(polygon1)   ; 单个多边形
             )
@@ -45,6 +48,9 @@ procedure(ycPolygonBoolean(polygon1 foo operation \@key cvId(_ycMakeGeometryTemp
             ((and not or xor)
                 ; polygon2
                 cond(
+                    (!foo
+                        t
+                    )
                     (forall(x foo isLocation(x))
                         foo = list(foo)   ; 单个多边形
                     )
