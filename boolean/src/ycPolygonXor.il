@@ -4,8 +4,8 @@
 ; Author   : YEUNGCHIE
 ;--------------------------
 
-procedure(ycPolygonXor(polygon1 polygon2 \@key cvId(_ycMakeGeometryTempCellView()) "llg")
-    ycPolygonBoolean(polygon1 polygon2 'xor ?cvId cvId)
+procedure(ycPolygonXor(polygon1(polygon1 polygon2 "ll")
+    ycPolygonBoolean(polygon1 polygon2 'xor)
 )
 
 ; END

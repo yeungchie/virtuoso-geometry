@@ -4,8 +4,8 @@
 ; Author   : YEUNGCHIE
 ;--------------------------
 
-procedure(ycPolygonSize(polygon1 size \@key cvId(_ycMakeGeometryTempCellView()) "lng")
-    ycPolygonBoolean(polygon1 size 'size ?cvId cvId)
+procedure(ycPolygonSize(polygon1 size "ln")
+    ycPolygonBoolean(polygon1 size 'size)
 )
 
 ; END

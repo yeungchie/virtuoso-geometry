@@ -4,8 +4,8 @@
 ; Author   : YEUNGCHIE
 ;--------------------------
 
-procedure(ycPolygonAnd(polygon1 polygon2 \@key cvId(_ycMakeGeometryTempCellView()) "llg")
-    ycPolygonBoolean(polygon1 polygon2 'and ?cvId cvId)
+procedure(ycPolygonAnd(polygon1 polygon2 "ll")
+    ycPolygonBoolean(polygon1 polygon2 'and)
 )
 
 ; END

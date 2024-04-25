@@ -4,8 +4,8 @@
 ; Author   : YEUNGCHIE
 ;--------------------------
 
-procedure(ycPolygonOr(polygon1 polygon2 \@key cvId(_ycMakeGeometryTempCellView()) "llg")
-    ycPolygonBoolean(polygon1 polygon2 'or ?cvId cvId)
+procedure(ycPolygonOr((polygon1 \@optional polygon2 "ll")
+    ycPolygonBoolean(polygon1 polygon2 'or)
 )
 
 ; END
