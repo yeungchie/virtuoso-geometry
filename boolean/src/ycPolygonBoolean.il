@@ -73,7 +73,7 @@ procedure(ycPolygonBoolean(polygon1 foo operation \@key cvId(_ycMakeGeometryTemp
                     (xor       dbPointArrayXor(cvId polygon1 foo))
                 )
             )
-            ("size"
+            (size
                 ; size
                 unless(numberp(foo)
                     ycError("argument #2 should be an number - %A" foo)
