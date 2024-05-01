@@ -4,7 +4,7 @@
 ; Author   : YEUNGCHIE
 ;--------------------------
 
-procedure(ycPolygonXor(polygon1(polygon1 polygon2 "ll")
+procedure(ycPolygonXor(polygon1 polygon2 "ll")
     ycPolygonBoolean(polygon1 polygon2 'xor)
 )
 

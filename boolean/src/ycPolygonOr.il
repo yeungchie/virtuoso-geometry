@@ -4,7 +4,7 @@
 ; Author   : YEUNGCHIE
 ;--------------------------
 
-procedure(ycPolygonOr((polygon1 \@optional polygon2 "ll")
+procedure(ycPolygonOr(polygon1 \@optional polygon2 "ll")
     ycPolygonBoolean(polygon1 polygon2 'or)
 )
 
