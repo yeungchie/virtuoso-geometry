@@ -5,7 +5,7 @@
 ;--------------------------
 
 procedure(ycPolygonNot(polygon1 polygon2 "ll")
-    ycPolygonBoolean(polygon1 polygon2 'not)
+    ycPolygonBoolean('not polygon1 polygon2)
 )
 
 ; END

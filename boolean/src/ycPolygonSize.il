@@ -5,7 +5,7 @@
 ;--------------------------
 
 procedure(ycPolygonSize(polygon1 size "ln")
-    ycPolygonBoolean(polygon1 size 'size)
+    ycPolygonBoolean('size polygon1 size)
 )
 
 ; END

@@ -5,7 +5,7 @@
 ;--------------------------
 
 procedure(ycPolygonOr(polygon1 \@optional polygon2 "ll")
-    ycPolygonBoolean(polygon1 polygon2 'or)
+    ycPolygonBoolean('or polygon1 polygon2)
 )
 
 ; END

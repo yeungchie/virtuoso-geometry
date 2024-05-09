@@ -6,14 +6,13 @@
 
 ; 多边形的布尔运算
 
-procedure(ycPolygonBoolean(polygon1 foo operation \@key cvId(_ycMakeGeometryTempCellView()) "lgSd")
-    let((operationList polygonList)
-
+procedure(ycPolygonBoolean(operation polygon1 foo \@key cvId(_ycMakeGeometryTempCellView()) precision(10000.0) "Slgdn")
+    let((operationList function precisionBackup polygonList errorp)
         when(stringp(operation)
             operation = stringToSymbol(operation)
         )
         operationList = '(and not or xor size)
-        unless(member(operation operationList)
+        unless(memq(operation operationList)
             ycError("argument #3 should be one of the %A - %A" operationList operation)
         )
 
@@ -44,7 +43,7 @@ procedure(ycPolygonBoolean(polygon1 foo operation \@key cvId(_ycMakeGeometryTemp
         )
 
         ; operation
-        polygonList = case(operation
+        function = caseq(operation
             ((and not or xor)
                 ; polygon2
                 cond(
@@ -66,11 +65,11 @@ procedure(ycPolygonBoolean(polygon1 foo operation \@key cvId(_ycMakeGeometryTemp
                         ycError("argument #2 should be a point list for polygon - %A" foo)
                     )
                 )
-                case(operation
-                    (and       dbPointArrayAnd(cvId polygon1 foo))
-                    (not    dbPointArrayAndNot(cvId polygon1 foo))
-                    (or         dbPointArrayOr(cvId polygon1 foo))
-                    (xor       dbPointArrayXor(cvId polygon1 foo))
+                caseq(operation
+                    (and    'dbPointArrayAnd    )
+                    (not    'dbPointArrayAndNot )
+                    (or     'dbPointArrayOr     )
+                    (xor    'dbPointArrayXor    )
                 )
             )
             (size
@@ -78,8 +77,29 @@ procedure(ycPolygonBoolean(polygon1 foo operation \@key cvId(_ycMakeGeometryTemp
                 unless(numberp(foo)
                     ycError("argument #2 should be an number - %A" foo)
                 )
-                dbPointArraySize(cvId polygon1 foo)
+                'dbPointArraySize
             )
+        )
+
+        ; 调整精度
+        unless(nearlyEqual(cvId~>DBUPerUU precision)
+            precisionBackup = cvId~>DBUPerUU
+            cvId~>DBUPerUU = 1.0*precision
+        )
+
+        errset(
+            polygonList = funcall(function cvId polygon1 foo)
+            t
+        )
+        errorp = errset.errset
+
+        ; 恢复精度
+        when(precisionBackup
+            cvId~>DBUPerUU = precisionBackup
+        )
+
+        when(errorp
+            ycError("something error happened ...")
         )
 
         polygonList

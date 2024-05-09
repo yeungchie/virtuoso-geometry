@@ -5,7 +5,7 @@
 ;--------------------------
 
 procedure(ycPolygonAnd(polygon1 polygon2 "ll")
-    ycPolygonBoolean(polygon1 polygon2 'and)
+    ycPolygonBoolean('and polygon1 polygon2)
 )
 
 ; END
