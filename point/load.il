@@ -7,5 +7,6 @@
 ycLoadi("src/ycGetProjection.il")
 ycLoadi("src/ycPointToBBox.il")
 ycLoadi("src/ycSnapPointToGrid.il")
+ycLoadi("src/ycIsPointInsidePolygon.il")
 
 ; END
