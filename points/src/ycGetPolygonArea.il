@@ -7,7 +7,7 @@
 ; 获取多边形面积
 
 procedure(ycGetPolygonArea(points "l")
-    let((area(0))
+    let((area(0.0))
         foreach((a b) points nconc(copy(cdr(points)) list(car(points)))
             unless(isLocation(a)
                 ycError("arguments #1 is not a valid point list - %A" a)
