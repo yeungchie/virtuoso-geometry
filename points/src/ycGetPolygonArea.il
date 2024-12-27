@@ -12,10 +12,12 @@ procedure(ycGetPolygonArea(points "l")
             unless(isLocation(a)
                 ycError("arguments #1 is not a valid point list - %A" a)
             )
-            area += xCoord(a)*yCoord(b) - yCoord(a)*xCoord(b)
+            area += (xCoord(a)*yCoord(b) - yCoord(a)*xCoord(b))
         )
         abs(area)/2
     )
 ); ycGetPolygonArea
 
 ; END
+
+points = list(2:2 1:2 1:1 0:1 0:0 2:0)
